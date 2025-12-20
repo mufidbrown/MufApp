@@ -1,0 +1,156 @@
+package com.muf.modules.file.entity;
+
+import com.muf.base.entity.BaseEntity;
+import com.muf.modules.file.entity.domain.FileLocation;
+import com.muf.modules.module.entity.domain.Module;
+import com.muf.modules.translation.TranslationKey;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Where;
+
+@SuppressWarnings("serial")
+@MappedSuperclass
+public class FileTypeEntity extends BaseEntity {
+
+    /* set translation */
+    @Transient
+    private String nameTranslated;
+
+    @ManyToOne
+    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @JoinColumn(name = "translation_key_id", referencedColumnName = "id", nullable = true)
+    private TranslationKey translationKey;
+
+    @ManyToOne
+//    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @JoinColumn(name = "module_id", referencedColumnName = "id")
+    private Module module;
+
+    @ManyToOne
+//    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @JoinColumn(name = "attribute_id", referencedColumnName = "id")
+    private Attribute attribute;
+
+    @Column(name = "file_extension_code", length = 64, nullable = false)
+    private String fileExtension;
+
+    @Column(name = "max_size", length = 20, nullable = false)
+    private Long maxSize;
+
+    @Column(name = "description", length = 512)
+    private String description;
+
+    @Column(name = "is_read_only")
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isReadOnly;
+
+    @Column(name = "is_encrypted")
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isEncrypted;
+
+    @ManyToOne
+    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @JoinColumn(name = "file_location_code", referencedColumnName = "code")
+    private FileLocation fileLocation;
+
+    @Column(name = "is_thumbnail")
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean isThumbnail;
+
+    @PrePersist
+    protected void prePersist() {
+        isReadOnly = isReadOnly == null ? false : isReadOnly;
+        isEncrypted = isEncrypted == null ? false : isEncrypted;
+        isThumbnail = isThumbnail == null ? false : isThumbnail;
+    }
+
+    public String getNameTranslated() {
+        return nameTranslated;
+    }
+
+    public void setNameTranslated(String nameTranslated) {
+        this.nameTranslated = nameTranslated;
+    }
+
+    public TranslationKey getTranslationKey() {
+        return translationKey;
+    }
+
+    public void setTranslationKey(TranslationKey translationKey) {
+        this.translationKey = translationKey;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
+
+//    public Attribute getAttribute() {
+//        return attribute;
+//    }
+//
+//    public void setAttribute(Attribute attribute) {
+//        this.attribute = attribute;
+//    }
+
+    public String getFileExtension() {
+        return fileExtension;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
+    }
+
+    public Long getMaxSize() {
+        return maxSize;
+    }
+
+    public void setMaxSize(Long maxSize) {
+        this.maxSize = maxSize;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Boolean getIsReadOnly() {
+        return isReadOnly;
+    }
+
+    public void setIsReadOnly(Boolean isReadOnly) {
+        this.isReadOnly = isReadOnly;
+    }
+
+    public Boolean getIsEncrypted() {
+        return isEncrypted;
+    }
+
+    public void setIsEncrypted(Boolean isEncrypted) {
+        this.isEncrypted = isEncrypted;
+    }
+
+    public FileLocation getFileLocation() {
+        return fileLocation;
+    }
+
+    public void setFileLocation(FileLocation fileLocation) {
+        this.fileLocation = fileLocation;
+    }
+
+    public Boolean getIsThumbnail() {
+        return isThumbnail;
+    }
+
+    public void setIsThumbnail(Boolean isThumbnail) {
+        this.isThumbnail = isThumbnail;
+    }
+
+}
+

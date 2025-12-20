@@ -1,0 +1,25 @@
+package com.muf.modules.user.controller;
+
+import com.muf.modules.user.dto.UserRoleRequest;
+import com.muf.modules.user.dto.UserRoleResponse;
+import com.muf.modules.user.service.UserRoleService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/user-roles")
+@RequiredArgsConstructor
+public class UserRoleController {
+
+    @Autowired
+    private final UserRoleService userRoleService;
+
+    @PostMapping
+    public UserRoleResponse assignRole(@RequestBody UserRoleRequest userRoleRequest){
+        return userRoleService.assignRole(userRoleRequest);
+    }
+}

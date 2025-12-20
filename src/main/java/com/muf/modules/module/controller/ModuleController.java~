@@ -1,0 +1,55 @@
+package com.muf.modules.module.controller;
+
+import com.muf.base.controller.BaseModuleController;
+import com.muf.common.constant.AppConstant;
+import com.muf.core.engine.FileEngineService;
+import com.muf.model.Page;
+import com.muf.model.TableRequest;
+import com.muf.modules.file.service.FileService;
+import com.muf.modules.module.entity.domain.Module;
+import com.muf.modules.module.service.ModuleService;
+import jakarta.persistence.EntityGraph;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+@RequestMapping("/api/module")
+@Transactional(readOnly = true)
+public class ModuleController extends BaseModuleController {
+
+
+    @Autowired
+    private ModuleService moduleService;
+
+/*
+    private ModuleGroupRepository moduleGroupRepository;
+*/
+
+    @Autowired
+    private FileService fileService;
+
+    @Autowired
+    private FileEngineService fileEngineService;
+
+
+    @Override
+    protected String getModuleCode() {
+        return AppConstant.MCODE_MODULE;
+    }
+
+    @PostMapping(path = "/index")
+    public Page<Module> index(@RequestBody TableRequest tableRequest) {
+        /*set graph*/
+        final EntityGraph<Module> moduleGraph = moduleService.getRepository().getEntityManager().createEntityGraph(Module.class);
+        moduleGraph.addAttributeNodes("moduleType");
+        /*end set graph*/
+
+        Page<Module> modulePage = moduleService.getListForPagination(tableRequest, moduleGraph);
+        return modulePage;
+    }
+}

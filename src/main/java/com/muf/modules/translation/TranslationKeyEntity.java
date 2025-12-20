@@ -1,0 +1,52 @@
+package com.muf.modules.translation;
+
+import com.muf.base.entity.BaseEntity;
+import com.muf.modules.module.entity.domain.Module;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.io.Serializable;
+import java.util.List;
+
+@SuppressWarnings("serial")
+@MappedSuperclass
+public class TranslationKeyEntity extends BaseEntity implements Serializable {
+
+    @ManyToOne
+    @JoinColumn(name = "module_id", referencedColumnName = "id", nullable = false)
+    private Module module;
+
+    @OneToMany(mappedBy = "translationKey", fetch= FetchType.EAGER)
+    @OrderBy(value = "lang.id ASC")
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Translation> translationList;
+
+    @Column(name = "key", length = 64, nullable = false)
+    private String key;
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
+
+    public List<Translation> getTranslationList() {
+        return translationList;
+    }
+
+    public void setTranslationList(List<Translation> translationList) {
+        this.translationList = translationList;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+}
