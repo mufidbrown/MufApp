@@ -1,4 +1,0 @@
-package com.muf.modules.file.entity;
-
-public class FileExtensionEntity {
-}
