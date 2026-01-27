@@ -81,6 +81,12 @@ app:
 application:
   url: http://localhost:8081
 
+jwt:
+  secret: MufidJwtSecretKey1234567890987654321 # ≥32 karakter
+  expiration: 3600000          # 1 jam (access token)
+  refresh:
+    expiration: 86400000       # 1 hari (refresh token)
+
 
 # added on 12/12/2025
 # Redis untuk cache + session (recommended)

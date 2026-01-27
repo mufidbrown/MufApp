@@ -3,15 +3,22 @@ package com.muf.modules.user.entity;
 
 import com.muf.base.entity.BaseEntity;
 import com.muf.modules.language.Lang;
+import com.muf.modules.user.entity.domain.Role;
+import com.muf.modules.user.entity.domain.UserRole;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Where;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @SuppressWarnings("serial")
 @MappedSuperclass
 public abstract class UserEntity extends BaseEntity implements Serializable {
+
 
     @Column(name = "fullname", length = 255, nullable = false)
     private String fullName;
@@ -19,6 +26,7 @@ public abstract class UserEntity extends BaseEntity implements Serializable {
     @Column(unique = true, nullable = false)
     private String email;
 
+//    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
@@ -26,13 +34,13 @@ public abstract class UserEntity extends BaseEntity implements Serializable {
     private String status;
 
     @Column(name = "is_active", nullable = false)
-    private Boolean isActive;
+    private Boolean isActive = true;
 
     @Column(name = "is_locked", nullable = false)
-    private Boolean isLocked;
+    private Boolean isLocked = false;
 
     @Column(name = "login_attempt", nullable = false)
-    private Integer loginAttempt;
+    private Integer loginAttempt = 0;
 
     @Column(name = "login_attempt_date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -43,14 +51,7 @@ public abstract class UserEntity extends BaseEntity implements Serializable {
     private Date logDate;
 
     @Column(name = "used", nullable = false)
-    private boolean used;
-
-    @ManyToOne
-    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
-    @JoinColumn(name = "lang_id", referencedColumnName = "id", nullable = false)
-    private Lang lang;
-
-
+    private boolean used = false;
 
     public String getFullName() {
         return fullName;
@@ -132,11 +133,11 @@ public abstract class UserEntity extends BaseEntity implements Serializable {
         this.used = used;
     }
 
-    public Lang getLang() {
-        return lang;
-    }
 
-    public void setLang(Lang lang) {
-        this.lang = lang;
-    }
+    /*  @ManyToOne
+    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @JoinColumn(name = "lang_id", referencedColumnName = "id", nullable = false)
+    private Lang lang;*/
+
+
 }

@@ -6,6 +6,7 @@ import com.muf.base.entity.BaseEntity;
 import com.muf.modules.user.entity.domain.Role;
 import com.muf.modules.user.entity.domain.User;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Where;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,12 +20,12 @@ public abstract class UserRoleEntity extends BaseEntity implements Serializable 
 
     @JsonIgnore
     @ManyToOne
-//    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @ManyToOne
-//    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
+    @Where(clause = "is_deleted = " + BaseEntity.ENTITY_FLAG_NOT_DELETED)
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
 
@@ -36,9 +37,8 @@ public abstract class UserRoleEntity extends BaseEntity implements Serializable 
     @Temporal(TemporalType.TIMESTAMP)
     protected Date endDate;
 
-    @Column(name = "is_Default")
-//    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private Boolean isDefault;
+    @Column(name = "is_default")
+    private Boolean isDefault = false;
 
     @PrePersist
     protected void prePersist() {
@@ -85,13 +85,12 @@ public abstract class UserRoleEntity extends BaseEntity implements Serializable 
         this.endDate = endDate;
     }
 
-    public Boolean getIsDefault() {
+    public Boolean getDefault() {
         return isDefault;
     }
 
-    public void setIsDefault(Boolean isDefault) {
-        this.isDefault = isDefault;
+    public void setDefault(Boolean aDefault) {
+        isDefault = aDefault;
     }
-
 }
 

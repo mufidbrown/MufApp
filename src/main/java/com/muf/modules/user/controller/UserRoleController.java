@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user-roles")
 @RequiredArgsConstructor
 public class UserRoleController {
-
-    private final UserRoleService userRoleService;
-
-    @PostMapping
-    public UserRoleResponse assignRole(@RequestBody UserRoleRequest userRoleRequest){
-        return userRoleService.assignRole(userRoleRequest);
-    }
+//
+//    private final UserRoleService userRoleService;
+//
+//    @PostMapping
+//    public UserRoleResponse assignRole(@RequestBody UserRoleRequest userRoleRequest){
+//        return userRoleService.assignRole(userRoleRequest);
+//    }
 }

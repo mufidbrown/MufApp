@@ -16,4 +16,6 @@ public class UserRoleResponse {
     private Boolean isDefault;
     private Date createdAt;
     private Date updatedAt;
+
+
 }

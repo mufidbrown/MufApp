@@ -21,7 +21,7 @@ public class RegisterRequest {
     @NotBlank(message = "Confirm password is required")
     private String confirmPassword;
 
-    private Long roleId;  // Role to assign
+    private Integer roleId;  // Role to assign
 
     // Getters and Setters
     public String getFullName() {
@@ -56,11 +56,11 @@ public class RegisterRequest {
         this.confirmPassword = confirmPassword;
     }
 
-    public Long getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 }

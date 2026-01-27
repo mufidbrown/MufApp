@@ -2,7 +2,7 @@ package com.muf.base.controller;
 
 
 
-import com.muf.core.session.CurrentUserSession;
+//import com.muf.core.session.CurrentUserSession;
 import com.muf.modules.module.service.ModuleService;
 import io.micrometer.common.util.StringUtils;
 import org.slf4j.Logger;
@@ -21,8 +21,8 @@ public abstract class BaseController {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private CurrentUserSession currentUserSession;
+//    @Autowired
+//    private CurrentUserSession currentUserSession;
 
     @Autowired
     private ModuleService moduleService;
@@ -47,11 +47,11 @@ public abstract class BaseController {
         return CollectionUtils.isEmpty(list);
     }
 
-    public CurrentUserSession getCurrentUserSession() {
-        return currentUserSession;
-    }
-
-    public void setCurrentUserSession(CurrentUserSession currentUserSession) {
-        this.currentUserSession = currentUserSession;
-    }
+//    public CurrentUserSession getCurrentUserSession() {
+//        return currentUserSession;
+//    }
+//
+//    public void setCurrentUserSession(CurrentUserSession currentUserSession) {
+//        this.currentUserSession = currentUserSession;
+//    }
 }

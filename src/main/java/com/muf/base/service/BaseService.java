@@ -1,7 +1,7 @@
 package com.muf.base.service;
 
 import com.muf.core.engine.TranslatorEngineService;
-import com.muf.core.session.CurrentUserSession;
+//import com.muf.core.session.CurrentUserSession;
 import io.micrometer.common.util.StringUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -16,8 +16,8 @@ public abstract class BaseService {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    protected CurrentUserSession currentUserSession;
+//    @Autowired
+//    protected CurrentUserSession currentUserSession;
 
 //    @Autowired
 //    protected TranslatorEngineService translatorEngineService;
@@ -38,12 +38,12 @@ public abstract class BaseService {
         return CollectionUtils.isEmpty(list);
     }
 
-    public CurrentUserSession getCurrentUserSession() {
-        return currentUserSession;
-    }
-
-    public void setCurrentUserSession(CurrentUserSession currentUserSession) {
-        this.currentUserSession = currentUserSession;
-    }
+//    public CurrentUserSession getCurrentUserSession() {
+//        return currentUserSession;
+//    }
+//
+//    public void setCurrentUserSession(CurrentUserSession currentUserSession) {
+//        this.currentUserSession = currentUserSession;
+//    }
 
 }
