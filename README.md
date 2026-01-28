@@ -1,4 +1,4 @@
-# 🚀 Backend Portfolio – Enterprise-Grade System
+# 🚀 Backend - Enterprise-Grade System
 
 ## 📌 Overview
 This project is an **enterprise-grade backend system** designed with a strong focus on **security, scalability, maintainability, and robustness**.  
@@ -40,3 +40,17 @@ It reflects hands-on experience in building backend services that go beyond basi
 ## 🔄 Business Workflow
 - Implemented **state-based business workflow**
 - Example flow:
+
+## A. Data Management (Master Data)
+
+Users: Semua user (sales, CS, admin) tercatat dan bisa diassign ke lead, task, atau activity.
+
+Lead Sources: Data sumber lead tercatat → bisa analisis channel mana paling efektif.
+
+Leads: Semua lead tercatat lengkap, unik (phone/email), punya owner & status.
+
+Lead History: Semua perubahan status lead tercatat → audit trail.
+
+Accounts & Contacts: Lead yang berhasil dikonversi menjadi account & contact → data perusahaan/pelanggan tersentralisasi.
+
+Conversions: Menyimpan informasi lead yang sudah jadi pelanggan → bisa track conversion rate.
