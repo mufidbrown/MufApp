@@ -80,7 +80,7 @@ public class AuthServiceImpl implements AuthService {
         user.setLogDate(new Date());
         user.setUpdatedAt(new Date());
 
-        userRepository.save(user); // ✅ AMAN: tidak sentuh user_role
+        userRepository.save(user);
 
         return createAuthResponse(user);
     }
@@ -169,11 +169,6 @@ public class AuthServiceImpl implements AuthService {
         user.setLoginAttempt(user.getLoginAttempt() + 1);
         user.setLoginAttemptDate(new Date());
         user.setUpdatedAt(new Date());
-
-//        if (user.getLoginAttempt() >= MAX_LOGIN_ATTEMPTS) {
-//            user.setIsLocked(true);
-//        }
-
         userRepository.save(user);
     }
 
