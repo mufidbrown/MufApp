@@ -1,7 +1,7 @@
 package com.muf.model;
 
-import com.muf.modules.user.entity.domain.User;
-import com.muf.modules.user.entity.domain.UserRole;
+import com.muf.modules.master.user.entity.domain.User;
+import com.muf.modules.master.user.entity.domain.UserRole;
 import lombok.Getter;
 import lombok.Setter;
 

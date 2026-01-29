@@ -5,20 +5,15 @@ import com.muf.core.engine.FileEngineService;
 import com.muf.core.engine.TranslatorEngineService;
 import com.muf.model.Response;
 import com.muf.model.UploadFileModel;
-import com.muf.model.ViewFileModel;
 import com.muf.modules.module.repository.ModuleRepository;
-import com.muf.modules.user.service.UserService;
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 //import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.IOException;
-import java.nio.file.NoSuchFileException;
-import java.util.List;
 
 @RestController
 @RequestMapping("")

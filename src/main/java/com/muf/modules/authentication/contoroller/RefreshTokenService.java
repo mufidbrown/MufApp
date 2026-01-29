@@ -1,11 +1,10 @@
 package com.muf.modules.authentication.contoroller;
 
 
-import com.muf.modules.user.entity.domain.RefreshToken;
-import com.muf.modules.user.entity.domain.User;
-import com.muf.modules.user.repository.RefreshTokenRepository;
+import com.muf.modules.master.user.entity.domain.RefreshToken;
+import com.muf.modules.master.user.entity.domain.User;
+import com.muf.modules.master.user.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

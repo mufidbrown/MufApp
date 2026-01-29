@@ -1,16 +1,16 @@
 package com.muf.modules.authentication.contoroller;
 
-import com.muf.infrastructure.security.jwt.JwtUtil;
+import com.muf.infrastructure.jwt.JwtUtil;
 import com.muf.modules.authentication.login.LoginRequest;
 import com.muf.modules.authentication.register.RegisterRequest;
-import com.muf.modules.user.entity.domain.RefreshToken;
-import com.muf.modules.user.entity.domain.Role;
-import com.muf.modules.user.entity.domain.User;
-import com.muf.modules.user.entity.domain.UserRole;
-import com.muf.modules.user.repository.RefreshTokenRepository;
-import com.muf.modules.user.repository.RoleRepository;
-import com.muf.modules.user.repository.UserRepository;
-import com.muf.modules.user.repository.UserRoleRepository;
+import com.muf.modules.master.user.entity.domain.RefreshToken;
+import com.muf.modules.master.user.entity.domain.Role;
+import com.muf.modules.master.user.entity.domain.User;
+import com.muf.modules.master.user.entity.domain.UserRole;
+import com.muf.modules.master.user.repository.RefreshTokenRepository;
+import com.muf.modules.master.user.repository.RoleRepository;
+import com.muf.modules.master.user.repository.UserRepository;
+import com.muf.modules.master.user.repository.UserRoleRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

@@ -1,7 +1,7 @@
 package com.muf.common.constant;
 
 public interface CoreConstant {
-    public static final String LOGIN_SEPARATOR_KEY = "#PRM-MMI#";
+    public static final String LOGIN_SEPARATOR_KEY = "#MFD#";
     public static final String TOKEN_KEY = "Authorization";
 
     /* ENGINE */

@@ -1,9 +1,8 @@
 package com.muf.infrastructure.security;
 
 
-import com.muf.infrastructure.security.jwt.JwtAuthFilter;
+import com.muf.infrastructure.jwt.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
