@@ -3,11 +3,15 @@ package com.muf.modules.master.user.entity;
 
 import com.muf.base.entity.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
 
 @SuppressWarnings("serial")
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class UserEntity extends BaseEntity implements Serializable {
 
