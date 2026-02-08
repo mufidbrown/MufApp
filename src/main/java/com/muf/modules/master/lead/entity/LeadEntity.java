@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,11 +25,11 @@ public class LeadEntity extends BaseEntity implements Serializable {
     @Column(name = "email", length = 100)
     private String email;
 
-    @Column(name = "source_code", length = 50)
-    private String sourceCode;
+//    @Column(name = "source_code", length = 50)
+//    private String sourceCode;
 
     @ManyToOne
-    @JoinColumn(name = "source_code", referencedColumnName = "code", insertable = false, updatable = false)
+//    @JoinColumn(name = "source_code", referencedColumnName = "code", insertable = false, updatable = false)
     private LeadSource leadSource;
 
     @Column(name = "status", length = 30, nullable = false)
@@ -41,11 +42,4 @@ public class LeadEntity extends BaseEntity implements Serializable {
     @JoinColumn(name = "owner_id", insertable = false, updatable = false)
     private User owner;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
 }

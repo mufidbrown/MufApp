@@ -4,7 +4,6 @@ import com.muf.modules.master.user.dto.CreateUserRequest;
 import com.muf.modules.master.user.dto.UpdatePersonalInfoRequest;
 import com.muf.modules.master.user.dto.UpdateUserRequest;
 import com.muf.modules.master.user.dto.UserResponse;
-import com.muf.modules.user.dto.*;
 import com.muf.modules.master.user.entity.domain.Role;
 import com.muf.modules.master.user.entity.domain.User;
 import com.muf.modules.master.user.entity.domain.UserRole;

@@ -11,6 +11,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "leads_history", uniqueConstraints = { @UniqueConstraint(columnNames = { "path", "is_deleted" }) })
+@Table(name = "leads_history")
 public class LeadHistory extends LeadHistoryEntity {
 }

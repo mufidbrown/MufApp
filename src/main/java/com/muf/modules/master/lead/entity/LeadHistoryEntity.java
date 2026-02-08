@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -30,8 +31,14 @@ public class LeadHistoryEntity extends BaseEntity implements Serializable {
     @Column(name = "changed_at")
     private LocalDateTime changedAt;
 
-    @PrePersist
-    protected void onCreate() {
-        changedAt = LocalDateTime.now();
-    }
+//    @PrePersist
+//    protected void onCreate() {
+//        changedAt = LocalDateTime.now();
+//    }
+
+//    @PrePersist
+//    protected void onCreate() {
+//        changedAt = new Date();
+//    }
+
 }

@@ -19,9 +19,9 @@ public class CreateLeadRequest {
     @Size(max = 100, message = "Email must not exceed 100 characters")
     private String email;
 
-    @NotBlank(message = "Source code is required")
-    @Size(max = 50, message = "Source code must not exceed 50 characters")
-    private String sourceCode;
+//    @NotBlank(message = "Source code is required")
+//    @Size(max = 50, message = "Source code must not exceed 50 characters")
+//    private String sourceCode;
 
-    private Integer ownerId;
+//    private Integer ownerId;
 }

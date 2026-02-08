@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class LeadResponse {
@@ -17,5 +18,5 @@ public class LeadResponse {
     private String status;
     private Integer ownerId;
     private String ownerName;
-    private LocalDateTime createdAt;
+    private Date createdAt;
 }

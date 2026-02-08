@@ -6,7 +6,6 @@ import com.muf.modules.master.user.dto.CreateUserRequest;
 import com.muf.modules.master.user.dto.UpdatePersonalInfoRequest;
 import com.muf.modules.master.user.dto.UpdateUserRequest;
 import com.muf.modules.master.user.dto.UserResponse;
-import com.muf.modules.user.dto.*;
 import com.muf.modules.master.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

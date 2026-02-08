@@ -4,7 +4,6 @@ import com.muf.modules.master.user.dto.CreateUserRequest;
 import com.muf.modules.master.user.dto.UpdatePersonalInfoRequest;
 import com.muf.modules.master.user.dto.UpdateUserRequest;
 import com.muf.modules.master.user.dto.UserResponse;
-import com.muf.modules.user.dto.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
