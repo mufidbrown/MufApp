@@ -1,6 +1,7 @@
 package com.muf.common.exception;
 
 import com.muf.base.exception.BusinessException;
+import com.muf.common.exception.customfollowup.*;
 import com.muf.common.exception.customleadflow.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,39 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidStatusTransitionException.class)
     public ResponseEntity<Map<String, Object>> handleInvalidStatusTransition(InvalidStatusTransitionException ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+
+    // ... activity follow up exception handlers ...
+
+    @ExceptionHandler(InvalidRelatedEntityException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidRelatedEntity(InvalidRelatedEntityException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidActivityTypeException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidActivityType(InvalidActivityTypeException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PastReminderException.class)
+    public ResponseEntity<Map<String, Object>> handlePastReminder(PastReminderException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ActivityNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleActivityNotFound(ActivityNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NoteNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleNoteNotFound(NoteNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ReminderNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleReminderNotFound(ReminderNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(BusinessException.class)

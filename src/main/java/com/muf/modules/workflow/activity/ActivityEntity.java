@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -29,7 +30,7 @@ public class ActivityEntity extends BaseEntity implements Serializable {
     private String relatedType;
 
     @Column(name = "related_id")
-    private Long relatedId;
+    private Integer relatedId;
 
     @Column(name = "due_date")
     private LocalDateTime dueDate;
@@ -37,11 +38,5 @@ public class ActivityEntity extends BaseEntity implements Serializable {
     @Column(name = "status", length = 30)
     private String status;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
 }

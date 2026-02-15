@@ -7,8 +7,6 @@ import lombok.Setter;
 
 @SuppressWarnings("serial")
 @Entity
-@Getter
-@Setter
 @Table(name = "activitys")
 public class Activity extends ActivityEntity{
 }
