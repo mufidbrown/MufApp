@@ -1,5 +1,6 @@
 package com.muf.modules.workflow.activity;
 
+import com.muf.common.exception.customfollowup.ActivityNotFoundException;
 import com.muf.common.exception.customfollowup.InvalidActivityTypeException;
 import com.muf.common.exception.customfollowup.InvalidRelatedEntityException;
 import com.muf.modules.master.lead.entity.domain.Lead;
@@ -51,6 +52,34 @@ public class ActivityServiceImpl implements ActivityService {
         Activity savedActivity = activityRepository.save(activity);
 
         return toActivityResponse(savedActivity);
+
+    }
+
+    @Override
+    @Transactional
+    public ActivityResponse updateActivity(Integer id, UpdateActivityRequest request) {
+        Activity activity = activityRepository.findById(id)
+                .orElseThrow(() -> new ActivityNotFoundException(id));
+
+        if (request.getSubject() != null) {
+            activity.setSubject(request.getSubject());
+        }
+
+        if (request.getNote() != null) {
+            activity.setDueDate(request.getDueDate());
+        }
+
+        if (request.getDueDate() != null) {
+            activity.setDueDate(request.getDueDate());
+        }
+
+        if (request.getStatus() != null) {
+            activity.setStatus(request.getStatus());
+        }
+
+        Activity updatedActivity = activityRepository.save(activity);
+
+        return toActivityResponse(updatedActivity);
 
     }
 

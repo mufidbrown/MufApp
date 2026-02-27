@@ -2,6 +2,7 @@ package com.muf.modules.workflow.reminder;
 
 import com.muf.common.exception.customfollowup.InvalidRelatedEntityException;
 import com.muf.common.exception.customfollowup.PastReminderException;
+import com.muf.common.exception.customfollowup.ReminderNotFoundException;
 import com.muf.modules.master.contact.Contact;
 import com.muf.modules.master.contact.ContactRepository;
 import com.muf.modules.master.customer.CustomerAccount;
@@ -48,6 +49,27 @@ public class ReminderServiceImpl implements ReminderService {
         Reminder savedReminder = reminderRepository.save(reminder);
 
         return toReminderResponse(savedReminder);
+    }
+
+    @Override
+    public ReminderResponse updateReminder(Integer id, UpdateReminderRequest request) {
+        Reminder reminder = reminderRepository.findById(id)
+                .orElseThrow(() -> new ReminderNotFoundException(id));
+
+        if (request.getRemindAt() != null){
+            // validate new reminder time is in the future
+            if (request.getRemindAt().isBefore(LocalDateTime.now())){
+                throw new PastReminderException();
+            }
+            reminder.setRemindAt(request.getRemindAt());
+        }
+
+        if (request.getStatus() != null){
+            reminder.setStatus(request.getStatus());
+        }
+
+        Reminder updatedReminder = reminderRepository.save(reminder);
+        return toReminderResponse(updatedReminder);
     }
 
 

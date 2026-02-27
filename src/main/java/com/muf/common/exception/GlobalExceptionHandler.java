@@ -3,6 +3,7 @@ package com.muf.common.exception;
 import com.muf.base.exception.BusinessException;
 import com.muf.common.exception.customfollowup.*;
 import com.muf.common.exception.customleadflow.*;
+import com.muf.common.exception.customopportunity.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +15,8 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    // ... lead management exception handlers ...
 
     @ExceptionHandler(DuplicatePhoneException.class)
     public ResponseEntity<Map<String, Object>> handleDuplicatePhone(DuplicatePhoneException ex) {
@@ -71,6 +74,34 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ReminderNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleReminderNotFound(ReminderNotFoundException ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+
+    // ... opportunity management exception handlers ...
+
+    @ExceptionHandler(OpportunityNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleOpportunityNotFound(OpportunityNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidLeadStatusException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidLeadStatus(InvalidLeadStatusException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidStageTransitionException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidStageTransition(InvalidStageTransitionException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidProbabilityException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidProbability(InvalidProbabilityException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FinalStageException.class)
+    public ResponseEntity<Map<String, Object>> handleFinalStage(FinalStageException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(BusinessException.class)

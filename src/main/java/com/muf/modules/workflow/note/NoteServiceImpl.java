@@ -1,6 +1,7 @@
 package com.muf.modules.workflow.note;
 
 import com.muf.common.exception.customfollowup.InvalidRelatedEntityException;
+import com.muf.common.exception.customfollowup.NoteNotFoundException;
 import com.muf.common.exception.customleadflow.UserNotFoundException;
 import com.muf.modules.master.contact.Contact;
 import com.muf.modules.master.contact.ContactRepository;
@@ -53,6 +54,19 @@ public class NoteServiceImpl implements NoteService {
         Note savedNote = noteRepository.save(note);
 
         return toNoteResponse(savedNote);
+    }
+
+    @Override
+    @Transactional
+    public NoteResponse updateNote(Integer id, UpdateNoteRequest request) {
+        Note note = noteRepository.findById(id)
+                .orElseThrow(() -> new NoteNotFoundException(id));
+
+        note.setContent(request.getContent());
+
+        Note updateNote = noteRepository.save(note);
+
+        return toNoteResponse(updateNote);
     }
 
     // Helper methods

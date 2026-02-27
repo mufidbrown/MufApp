@@ -4,10 +4,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/reminders")
@@ -20,5 +17,11 @@ public class ReminderController {
     public ResponseEntity<ReminderResponse> createReminder(@Valid @RequestBody CreateReminderRequest request) {
         ReminderResponse response = reminderService.createReminder(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ReminderResponse> updateReminder(@PathVariable Integer id, @Valid @RequestBody UpdateReminderRequest request) {
+        ReminderResponse response = reminderService.updateReminder(id, request);
+        return ResponseEntity.ok(response);
     }
 }

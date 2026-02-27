@@ -21,7 +21,8 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: mufid
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+#      ddl-auto: none
     show-sql: false
     generate-ddl: true
   jackson:
