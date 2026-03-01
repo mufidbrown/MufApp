@@ -1,6 +1,10 @@
 package com.muf.common.exception;
 
 import com.muf.base.exception.BusinessException;
+import com.muf.common.exception.customcustomercontact.ContactNotFoundException;
+import com.muf.common.exception.customcustomercontact.CustomerAccountNotFoundException;
+import com.muf.common.exception.customcustomercontact.DuplicateContactEmailException;
+import com.muf.common.exception.customcustomercontact.DuplicateCustomerAccountException;
 import com.muf.common.exception.customfollowup.*;
 import com.muf.common.exception.customleadflow.*;
 import com.muf.common.exception.customopportunity.*;
@@ -103,6 +107,30 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleFinalStage(FinalStageException ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+
+    // ... customeraccount & contact management exception handlers ...
+
+    @ExceptionHandler(CustomerAccountNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleCustomerAccountNotFound(CustomerAccountNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ContactNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleContactNotFound(ContactNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DuplicateCustomerAccountException.class)
+    public ResponseEntity<Map<String, Object>> handleDuplicateCustomerAccount(DuplicateCustomerAccountException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(DuplicateContactEmailException.class)
+    public ResponseEntity<Map<String, Object>> handleDuplicateContactEmail(DuplicateContactEmailException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
+    }
+
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<Map<String, Object>> handleBusinessException(BusinessException ex) {

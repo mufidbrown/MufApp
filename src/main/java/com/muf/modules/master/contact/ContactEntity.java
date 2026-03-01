@@ -2,10 +2,7 @@ package com.muf.modules.master.contact;
 
 import com.muf.base.entity.BaseEntity;
 import com.muf.modules.master.customer.CustomerAccount;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,11 +25,11 @@ public class ContactEntity extends BaseEntity implements Serializable {
     @Column(name = "position", length = 100)
     private String position;
 
-    @Column(name = "account_id")
-    private Long accountId;
+    @Column(name = "customer_account_id")
+    private Integer customerAccountId;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id", insertable = false, updatable = false)
-    private CustomerAccount account;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_account_id", insertable = false, updatable = false)
+    private CustomerAccount customerAccount;
 
 }

@@ -107,12 +107,14 @@ public class OpportunityServiceImpl implements OpportunityService {
             opportunity.setExpectedCloseDate(request.getExpectedCloseDate());
         }
 
+        // Updated Opportunity
         opportunityRepository.save(opportunity);
 
-        Opportunity withLead = opportunityRepository.findByIdWithLead(id)
+        // Reload with lead details
+        Opportunity opportunityWithLead = opportunityRepository.findByIdWithLead(id)
                 .orElseThrow(() -> new OpportunityNotFoundException(id));
 
-        return opportunityMapper.toOpportunityResponse(withLead);
+        return opportunityMapper.toOpportunityResponse(opportunityWithLead);
     }
 
 }
