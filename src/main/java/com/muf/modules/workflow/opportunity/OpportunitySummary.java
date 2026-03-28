@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class OpportunitySummary {
-    private Long id;
+    private Integer id;
     private String stage;
     private BigDecimal value;
     private Integer probability;

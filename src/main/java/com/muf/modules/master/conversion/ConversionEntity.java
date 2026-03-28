@@ -2,7 +2,7 @@ package com.muf.modules.master.conversion;
 
 import com.muf.base.entity.BaseEntity;
 import com.muf.modules.master.contact.Contact;
-import com.muf.modules.master.customer.CustomerAccount;
+import com.muf.modules.master.customeraccount.CustomerAccount;
 import com.muf.modules.master.lead.entity.domain.Lead;
 import jakarta.persistence.*;
 import lombok.Getter;

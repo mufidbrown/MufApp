@@ -1,7 +1,7 @@
 package com.muf.modules.master.contact;
 
 import com.muf.base.entity.BaseEntity;
-import com.muf.modules.master.customer.CustomerAccount;
+import com.muf.modules.master.customeraccount.CustomerAccount;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

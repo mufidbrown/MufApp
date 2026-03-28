@@ -1,6 +1,10 @@
 package com.muf.common.exception;
 
 import com.muf.base.exception.BusinessException;
+import com.muf.common.exception.customconversion.ConversionNotFoundException;
+import com.muf.common.exception.customconversion.LeadAlreadyConvertedException;
+import com.muf.common.exception.customconversion.LeadNotQualifiedException;
+import com.muf.common.exception.customconversion.NoOpportunityForLeadException;
 import com.muf.common.exception.customcustomercontact.ContactNotFoundException;
 import com.muf.common.exception.customcustomercontact.CustomerAccountNotFoundException;
 import com.muf.common.exception.customcustomercontact.DuplicateContactEmailException;
@@ -8,6 +12,7 @@ import com.muf.common.exception.customcustomercontact.DuplicateCustomerAccountEx
 import com.muf.common.exception.customfollowup.*;
 import com.muf.common.exception.customleadflow.*;
 import com.muf.common.exception.customopportunity.*;
+import com.muf.common.exception.customtaskmanagement.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -130,6 +135,58 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleDuplicateContactEmail(DuplicateContactEmailException ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
+
+    // ... task management exception handlers ...
+
+    @ExceptionHandler(TaskNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleTaskNotFound(TaskNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidTaskStatusTransitionException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidTaskStatusTransition(InvalidTaskStatusTransitionException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FinalTaskStatusException.class)
+    public ResponseEntity<Map<String, Object>> handleFinalTaskStatus(FinalTaskStatusException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidTaskPriorityException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidTaskPriority(InvalidTaskPriorityException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AssignmentNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleAssignmentNotFound(AssignmentNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+
+    // ... conversion exception handlers ...
+
+    @ExceptionHandler(LeadAlreadyConvertedException.class)
+    public ResponseEntity<Map<String, Object>> handleLeadAlreadyConverted(LeadAlreadyConvertedException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(LeadNotQualifiedException.class)
+    public ResponseEntity<Map<String, Object>> handleLeadNotQualified(LeadNotQualifiedException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoOpportunityForLeadException.class)
+    public ResponseEntity<Map<String, Object>> handleNoOpportunityForLead(NoOpportunityForLeadException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ConversionNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleConversionNotFound(ConversionNotFoundException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
 
 
     @ExceptionHandler(BusinessException.class)

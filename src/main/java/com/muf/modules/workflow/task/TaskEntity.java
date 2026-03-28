@@ -2,10 +2,7 @@ package com.muf.modules.workflow.task;
 
 import com.muf.base.entity.BaseEntity;
 import com.muf.modules.master.user.entity.domain.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,10 +28,14 @@ public class TaskEntity extends BaseEntity implements Serializable {
     private String status;
 
     @Column(name = "assigned_to")
-    private Long assignedTo;
+    private Integer assignedTo;
 
     @ManyToOne
     @JoinColumn(name = "assigned_to", insertable = false, updatable = false)
     private User assignedUser;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "assigned_to")
+//    private User assignedUser;
 
 }

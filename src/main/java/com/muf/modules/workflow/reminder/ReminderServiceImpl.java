@@ -5,12 +5,10 @@ import com.muf.common.exception.customfollowup.PastReminderException;
 import com.muf.common.exception.customfollowup.ReminderNotFoundException;
 import com.muf.modules.master.contact.Contact;
 import com.muf.modules.master.contact.ContactRepository;
-import com.muf.modules.master.customer.CustomerAccount;
-import com.muf.modules.master.customer.CustomerAccountRepository;
+import com.muf.modules.master.customeraccount.CustomerAccount;
+import com.muf.modules.master.customeraccount.CustomerAccountRepository;
 import com.muf.modules.master.lead.entity.domain.Lead;
 import com.muf.modules.master.lead.repository.LeadRepository;
-import com.muf.modules.workflow.note.Note;
-import com.muf.modules.workflow.note.NoteResponse;
 import com.muf.modules.workflow.opportunity.OpportunityRepository;
 import com.muf.modules.workflow.task.Task;
 import com.muf.modules.workflow.task.TaskRepository;
@@ -18,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
